@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="assets/css/chat.css" rel="stylesheet" type="text/css" />
+	<title>Chat - Arccticy Chat</title>
+	<style>
+		body {
+			background: #181620;
+		}
+	</style>
+</head>
+
+<body background="assets/images/background.jpg">
+	<div id="chat"></div>
+  <div id="snackbar">Connected to server!</div>
+    <form action="/" method="POST" id="chatForm" onsubmit="submitMessage(event)">
+			<input autoComplete="off" type="text" id="classss" autofocus="on" placeholder="Say something..."/>
+		</form>
+
+    <script src="assets/js/chat.js"></script>
+  </body>
+</html>

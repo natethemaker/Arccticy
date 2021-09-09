@@ -1,0 +1,8 @@
+{
+    "leaddev": "<a href=javascript:alert(\"verifed as Lead Developer\") class='red'>[Lead Developer]</a> ",
+    "prodmngr": "<a href=javascript:alert(\"verifed as Product Manager \") class='purple'>[Product Manager]</a> ",
+    "designer": "<a href=javascript:alert(\"verifed as Designer\") class='pink'>[Designer]</a> ",
+    "backend-dev": "<a href=javascript:alert(\"verifed as Backend Developer\") class='yellow'>[Backend Developer]</a>  ",
+    "marketing-assistant": "<a href=javascript:alert(\"verifed as Marketing Assitant\") class='red'>[Marketing Assistant]</a> ",
+    "dev": "<a href=javascript:alert(\"verifed as Developer\") class='blue'>[Developer]</a> "
+}

@@ -1,3 +1,5 @@
+
+## discord https://discord.gg/pSSdPgAyQX
 sup
 
 how are you all
@@ -51,8 +53,10 @@ sorry for ping but the repl is saying `Upgrade Required`
 ckn the great - hi 
 
 nathantodd2 - chicken i need your help the program is weird dudeactualdev
-i need youread up
 
-wait why does it say upgrade required
-sure, i dont use it, i not allowed to
-idk im making discord btw for easy communication oof plus i work on gepl chat with you
+nt2 i need youread up
+
+dad - wait why does it say upgrade required sure, i dont use it, i not allowed to
+nt2 - idk im making discord btw for easy communication oof plus i work on gepl chat with you
+
+nt2 dudeactualdev what was it
