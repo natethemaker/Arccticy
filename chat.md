@@ -60,3 +60,8 @@ dad - wait why does it say upgrade required sure, i dont use it, i not allowed t
 nt2 - idk im making discord btw for easy communication oof plus i work on gepl chat with you
 
 nt2 dudeactualdev what was it
+
+```html
+i have joke <br><br> <a class=red>[Developer]</a><a class=white> dudeactualdev: i dont care</a>
+```
+is the code i typed in

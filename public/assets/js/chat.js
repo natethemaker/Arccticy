@@ -7,6 +7,7 @@ function connect() {
 
   socket.onclose = function(e) {
     console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+    location.reload();
     setTimeout(function() {
       connect();
     }, 1000);
@@ -14,6 +15,7 @@ function connect() {
 
   socket.onerror = function(err) {
     socket.close();
+    location.reload();
   };
 }
 connect();
@@ -48,6 +50,8 @@ function formatMessage(message) {
 		.replaceAll(":laugh:","🤣")
 		.replaceAll(":ghost:","👻")
 		.replaceAll(":sick:","🤢")
+    .replaceAll(":eyeroll:","🙄")
+    .replaceAll("gepl chat","rip gelp chat")
 }
 
 function sendMessage(message){
@@ -59,9 +63,9 @@ function sendMessage(message){
 function submitMessage(e){
   e.preventDefault();
 	const message = formatMessage(document.getElementById('classss').value).trim();
-	if (/^\s+$/.test(message)) warn("Cannot send an empty message.");
-	else if (message.length > 2000) warn("Message is too long.");
-	else if (sendMessage(message) != 0) warn("An error occurred");
+	if (/^\s+$/.test(message)) alert("Cannot send an empty message.");
+	else if (message.length > 2000) alert("Message is too long.");
+	else if (sendMessage(message) != 0) alert("An error occurred");
 	document.getElementById('classss').value = "";
 };
 

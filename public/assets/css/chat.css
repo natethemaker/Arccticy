@@ -2,7 +2,7 @@ html{
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#chat { animation: popup-fade-in 200ms 1 linear; padding-top: 32px; height: calc(100% - 96px); width: 92%; padding-left: 4%; padding-right: 4%; overflow-y: scroll; }
+#chat {animation: popup-fade-in 200ms 1 linear;padding-top: 32px;height: calc(100% - 96px);width: 92%;padding-left: 4%;padding-right: 4%;overflow-y: auto;}
 #chat > div { font-size: larger; width: 100%; }
 #chat > div > a.red {color: #F00}
 #chat > div > a.orange {color: rgb(255, 123, 0)}
@@ -11,9 +11,13 @@ html{
 #chat > div > a.blue {color: #00F}
 #chat > div > a.purple {color: rgb(132, 0, 255)}
 #chat > div > a.pink {color: rgb(255, 0, 221)}
-#chat > div > a.white {color: #FFF}
+#chat > div > a.white {color: white}
 #chat > div > a.black {color: #000}
-#chat > div::after { animation: popup-fade-in 200ms 1 linear; content: ""; width: 10; background-color: var(--dark); height: 1px; display: block; margin-top: 8px; margin-bottom: 8px; }
+#chat > div::after { animation: popup-fade-in 200ms 1 linear; content: ""; width: 10; background-color: rgba(0, 5, 80, 0.384); height: 1px; display: block; margin-top: 8px; margin-bottom: 8px; }
+
+.white{
+  color: white;
+}
 
 body{
   overflow: hidden;
@@ -47,7 +51,7 @@ input {
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
+  margin-left: -98px; /* Divide value of min-width by 2 */
   background-color: rgb(6, 167, 6); /* Black background color */
   color: black; /* White text color */
   text-align: center; /* Centered text */
@@ -55,9 +59,10 @@ input {
   padding: 16px; /* Padding */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  right: 10px; /* 30px from the bottom */
+  right: 27px; /* 30px from the bottom */
   bottom: 70px;
-  border: 3px solid black;
+  border: none;
+  font-size: 16px;
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -72,12 +77,12 @@ input {
 /* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
   from {right: 0; opacity: 0;}
-  to {right: 10px; opacity: 1;}
+  to {right: 27px; opacity: 1;}
 }
 
 @keyframes fadein {
   from {right: 0; opacity: 0;}
-  to {right: 10px; opacity: 1;}
+  to {right: 27px; opacity: 1;}
 }
 
 @-webkit-keyframes fadeout {

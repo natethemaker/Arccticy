@@ -1,9 +1,11 @@
-z{ 
+{
+    "3765453": "leaddev",
+    "3972692": "dev",
+    "6588066": "designer",
     "leaddev": "<a class='red'>[Lead Developer]</a> ",
     "dev": "<a class='red'>[Developer]</a> ",
     "designer": "<a class='pink'>[Designer]</a> ",
-    "backend-dev": "<a class='yellow'>[Backend Developer]</a>  ",
+    "backend-dev": "<a class='yellow'>[Backend Developer]</a> ",
     "marketing-assistant": "<a class='red'>[Marketing Assistant]</a> ",
-    "dev": "<a class='blue'>[Developer]</a> ",
-    "chicken": "<a class='blue'>[chicken]</a> ",
+    "chicken": "<a class='blue'>[ch1ck3n]</a> "
 }

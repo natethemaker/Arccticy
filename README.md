@@ -6,6 +6,8 @@
 
 ~~Designer~~: (2 people)(Taken - [@Bookie0](https://replit.com/@Bookie0/) [@ch1ck3n](https://replit.com/@ch1ck3n/))) 
 
+~~Chicken~~: (1 person)(Taken - [@ch1ck3n](https://replit.com/@ch1ck3n/))
+
 Back-end development: (3 people)(Available - [@natethemaker](https://replit.com/@natethemaker))
 
 ~~Marketing Assistant~~: (1 person)(Taken - [@natethemaker](https://replit.com/@natethemaker))
