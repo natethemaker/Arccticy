@@ -1,1 +1,1 @@
-run= node index.js > latest.log
+run=node index.js

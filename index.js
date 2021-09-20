@@ -1,47 +1,114 @@
-//Ect. Configs
-const fs = require('fs');
-var rateLimit = require('ws-rate-limit');
-var limiter = rateLimit('60s', 30);
-const fetch = require('fetch');
-//Express Configs
-const express = require('express');
+//<a class='red'>C</a><a class='orange'>O</a><a class='yellow'>L</a><a class='green'>O</a><a class='blue'>R</a><a class='purple'>S</a><a class='pink'>!</a>
+
+/*
+ * THE DATABASE BREAKS IF YOU EDIT IT BY HAND.... DONT
+ * To add someone to a role: /database replitID:role
+ * You must have a role yourself
+*/
+
+const url = require("url");
+const fs = require("fs");
+const http = require("http");
+const ws = require("ws");
+const express = require("express");
+const port = 8070;
+const JSONdb = require('simple-json-db');
+const db = new JSONdb('db/db.json');
+const colors = require('colors');
+
+const homepage = `${__dirname}/public/chat.html`;
+const loginpage = `${__dirname}/public/login.html`;
+const notfoundpage = `${__dirname}/public/404.html`;
+const secretpage = `${__dirname}/public/sdvnjsvjdnvj.html`
+
 const app = express();
-const expPort = 3000;
-//Websocket Configs
-const wsPort = 8080;
-const ws = require('ws');
+const server = http.createServer(app);
+
 const wsServer = new ws.Server({
-  port: `${wsPort}`,
-  verifyClient: function(info,callback){
-    if (info.origin.includes("repl.co")) {
-      console.log('Connection Accepted')
+  server,
+  verifyClient: function(info, callback) {
+    if (info.origin.includes("arccticy.repl.co") || info.origin.includes("https://18054d4f-9e03-4d32-bb00-e621409001f5.id.repl.co")) {
       callback(true);
     } else {
-      console.log(info.origin)
+      console.log(colors.red(`Someone tried to connect using a foreign domain: ${info.origin}`))
       callback(false);
     };
   }
 });
 
-//Express Server
-app.get('/', function(req, res) {
-  res.sendFile('public/home.html', {root: __dirname })
+app.use(express.urlencoded({ extended: true }));
+app.engine('html', require('ejs').renderFile);
+app.use(express.static('public'))
+
+app.get("/", (req, res) => {
+  user = req.headers["x-replit-user-name"]
+  if (req.get("X-Replit-User-Id")) {
+    res.render(homepage, { user: user })
+    console.log(colors.yellow(user + ' is now online!'))
+  }
+  else res.redirect("/login");
 });
 
-app.use('/', express.static(__dirname + '/public'));
-
-app.listen(expPort, () => {
-  console.log(`Express Server Started on Port: ${expPort}`);
+app.get("/login", (req, res) => {
+  if (req.get("X-Replit-User-Id")) res.redirect("/");
+  else res.sendFile(loginpage);
 });
 
-//Websocket Server
-wsServer.on('connection', function connection(ws) {
-  console.log('Connection made!')
-  limiter(ws);
-    ws.on('limited', (wss) => {
-    console.log('A user was rate limited.');
+app.get("/2b2t", (req, res) => res.sendFile(secretpage));
+
+app.all("*", (req, res) => res.sendFile(notfoundpage));
+
+
+wsServer.on("connection", (sock, req) => {
+  console.log(colors.yellow(`A user connected! Replit Name: ${req.headers["x-replit-user-name"]} Replit ID: ${req.headers["x-replit-user-id"]}`))
+  wsServer.broadcast(`m<span class="white">` + req.headers["x-replit-user-name"] + ' joined the party!</span>')
+  sock.on("message", (dataBuff) => {
+    var data = String(dataBuff)
+    console.log(colors.red(`Incoming data: `) + colors.magenta(data))
+    var proc = data.substr(1);
+    switch (data[0]) {
+      case "m":
+        if (proc.startsWith('/')) {
+         if(proc.startsWith(`/database`)){
+            if(db.get(req.headers["x-replit-user-id"]) != undefined){
+              var role = db.get(req.headers["x-replit-user-id"])
+              if(role != 'leaddev' || role != 'dev' || role != 'designer' || role != 'backend-dev' || role != 'marketing-assistant' || role != 'chicken'){
+                var dbVar = data.substr(11);
+                var ind1 = dbVar.indexOf(':');
+                var name = dbVar.slice(0, ind1);
+                var other = dbVar.slice(ind1 + 1, dbVar.length);
+                db.set(name, other)
+              }
+            } else {
+              sock.send(`mYou do not have permission to run that command`)
+            }
+          } else if(proc.startsWith('/upvote')){
+            sock.send("test")
+          } else {
+            sock.send(`mThat command does no exist.`)
+          }
+        } else {
+          if(db.get(req.headers["x-replit-user-id"]) != undefined){
+            wsServer.broadcast(`m${db.get(db.get(req.headers["x-replit-user-id"]))}<a class='white'>${req.headers["x-replit-user-name"]}:</a> <a class='white'>${proc}</a>`)
+          } else {
+            var noBR = proc.replace(/<br\/>/g, '');
+            wsServer.broadcast(`m<a class='orange'>${req.headers["x-replit-user-name"]}:</a> <a class='white'>${noBR}</a>`)
+          }
+        }
+        break;
+    };
   });
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
+  sock.on("close", (code) => {
+    wsServer.broadcast(`m<span class="white">` + req.headers["x-replit-user-name"] + ' disconnected.</span>')
+    console.log(colors.yellow(`${req.headers["x-replit-user-name"]} disconnected.`))
   });
 });
+
+wsServer.broadcast = function broadcast(msg) {
+  console.log(colors.red(`Outgoing Data: `) + colors.blue(msg));
+  wsServer.clients.forEach(function each(client) {
+    client.send(msg);
+  });
+};
+
+server.listen(port, () => console.log(colors.green(`Listening on port ${port}.`)));
