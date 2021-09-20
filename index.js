@@ -82,6 +82,8 @@ wsServer.on("connection", (sock, req) => {
             } else {
               sock.send(`mYou do not have permission to run that command`)
             }
+          } else if(proc.startsWith('/upvote')){
+            sock.send("test")
           } else {
             sock.send(`mThat command does no exist.`)
           }
