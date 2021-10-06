@@ -8,7 +8,7 @@
 
 ~~Chicken~~: (1 person)(Taken - [@ch1ck3n](https://replit.com/@ch1ck3n/))
 
-Back-end development: (3 people)(Available - [@natethemaker](https://replit.com/@natethemaker))
+Back-end development: (3 people)(Available - [@natethemaker](https://replit.com/@natethemaker), [@zplusfour](https://replit.com/@zplusfour))
 
 ~~Marketing Assistant~~: (1 person)(Taken - [@natethemaker](https://replit.com/@natethemaker))
 

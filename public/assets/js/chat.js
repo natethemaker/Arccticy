@@ -51,7 +51,7 @@ function formatMessage(message) {
 		.replaceAll(":ghost:","👻")
 		.replaceAll(":sick:","🤢")
     .replaceAll(":eyeroll:","🙄")
-    .replaceAll("gepl chat","rip gelp chat")
+    .replaceAll("gepl chat","rip gelp chat 😭")
 }
 
 function sendMessage(message){

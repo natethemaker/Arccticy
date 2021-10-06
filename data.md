@@ -1,4 +1,4 @@
-# so i big problem
+# so i big problem ~ Lankdev is working on it
 you can excuate javascript ie
 ```js
 javascript:msg=prompt("put msg here");newMessage("<a class='red'>[Lead Developer]</a><a class='white'> dudeactualdev: " + msg + "</a>")

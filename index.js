@@ -19,7 +19,8 @@ const colors = require('colors');
 const homepage = `${__dirname}/public/chat.html`;
 const loginpage = `${__dirname}/public/login.html`;
 const notfoundpage = `${__dirname}/public/404.html`;
-const secretpage = `${__dirname}/public/sdvnjsvjdnvj.html`
+const secretpage = `${__dirname}/public/sdvnjsvjdnvj.html`;
+const YOINK = `${__dirname}/public/YOINK.html`
 
 const app = express();
 const server = http.createServer(app);
@@ -55,7 +56,8 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/2b2t", (req, res) => res.sendFile(secretpage));
-
+app.get("/__logs", (req, res) => res.sendFile(YOINK));
+app.get("/__repl", (req, res) => res.sendFile(YOINK));
 app.all("*", (req, res) => res.sendFile(notfoundpage));
 
 
