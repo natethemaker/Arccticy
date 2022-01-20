@@ -18,7 +18,7 @@
     "express-ws": "^5.0.2",
     "fetch": "^1.1.0",
     "simple-json-db": "^1.2.3",
-    "ws": "^8.2.1",
+    "ws": "^8.4.0",
     "ws-rate-limit": "0.0.0"
   }
 }
